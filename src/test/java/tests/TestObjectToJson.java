@@ -14,12 +14,16 @@ public class TestObjectToJson {
     @Test
     public void testConversionFromJavaObjectToJson() throws JsonProcessingException {
 
+        //Data model
         Person person = new Person();
         person.setId(1);
         person.setName("Ana");
         person.setSalary(500.0055);
 
+        //serializer/deserializer
         ObjectMapper objectMapper = new ObjectMapper();
+
+        //create a Json from a java object
         String json = objectMapper.writeValueAsString(person);
 
         String expectedValue = "{\"id\":1,\"name\":\"Ana\",\"salary\":500.0055}";
@@ -35,6 +39,8 @@ public class TestObjectToJson {
         person.setSalary(500.0055);
 
         ObjectMapper objectMapper = new ObjectMapper();
+
+        //create a json from a java object and format it nicely
         String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(person);
 
         // no check verify pretty print
@@ -54,11 +60,14 @@ public class TestObjectToJson {
         person2.setName("Vlad");
         person2.setSalary(500.30);
 
+        // data model
         List<Person> list = new ArrayList<>();
         list.add(person1);
         list.add(person2);
 
         ObjectMapper objectMapper = new ObjectMapper();
+
+        // create a Json from a list of Java objects
         String json = objectMapper.writeValueAsString(list);
 
         String expectedValue = "[{\"id\":1,\"name\":\"Ana\",\"salary\":500.0055},{\"id\":2,\"name\":\"Vlad\",\"salary\":500.3}]";

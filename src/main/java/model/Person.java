@@ -5,15 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.Objects;
-
-//@JsonPropertyOrder(value = {"salary", "id", "name"})
+// Data model
+//@JsonPropertyOrder(value = {"salary", "id", "name"})  // specify order of properties in output Json
 public class Person {
 
     private int id;
 
+    // specify Json property name
+    // default is field name
     //    @JsonProperty("nume")
     private String name;
 
+    //ignore this field for Json serialization/deserialization
     //    @JsonIgnore
     private Double salary;
 

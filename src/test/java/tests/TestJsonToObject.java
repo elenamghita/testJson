@@ -14,9 +14,14 @@ public class TestJsonToObject {
 
     @Test
     public void testConversionFromStringToObject() throws JsonProcessingException {
+
+        //Json
         String text = "{\"id\":1,\"name\":\"Ana\",\"salary\":500.0055}";
 
+        // serializer/deserialization
         ObjectMapper objectMapper = new ObjectMapper();
+
+        // read a Java object from a Json
         Person person = objectMapper.readValue(text, Person.class);
 
         Person expected = new Person();
@@ -29,9 +34,13 @@ public class TestJsonToObject {
 
     @Test
     public void testConversionFromStringToMap() throws JsonProcessingException {
+
+        //Json
         String text = "{\"id\":1,\"name\":\"Ana\",\"salary\":500.0055}";
 
         ObjectMapper objectMapper = new ObjectMapper();
+
+        //read a Java map object from a Json
         Map<String, Object> map
                 = objectMapper.readValue(text, new TypeReference<Map<String, Object>>() {
         });
@@ -42,8 +51,13 @@ public class TestJsonToObject {
 
     @Test
     public void testConversionFromStringToList() throws JsonProcessingException {
+
+        //Json
         String text = "[{\"id\":1,\"name\":\"Ana\",\"salary\":500.0055},{\"id\":2,\"name\":\"Vlad\",\"salary\":500.3}]";
+
         ObjectMapper objectMapper = new ObjectMapper();
+
+        // read a list of objects from a Json
         List<Person> list = objectMapper.readValue(text, new TypeReference<>() {
         });
 
